@@ -1,15 +1,16 @@
+import 'package:coffie/model/product_model.dart';
 import 'package:coffie/utills/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
+
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  final ProductModel model;
+  const ProductCard({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
-
     return Container(
       width: size.width * 0.47,
       decoration: BoxDecoration(
@@ -27,7 +28,7 @@ class ProductCard extends StatelessWidget {
                   height: size.height * 0.18,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(image: AssetImage('assets/images/coffee1.png'),fit: BoxFit.fill)
+                    image: DecorationImage(image: AssetImage(model.productImage),fit: BoxFit.fill)
                   ),
                 ),
 
@@ -45,23 +46,22 @@ class ProductCard extends StatelessWidget {
                         const SizedBox(width: 5,),
                         Icon(Icons.star,color: Colors.yellow,size: 14,),
                         const SizedBox(width: 5,),
-                        Text('4.8',style: TextStyle(color: Colors.white,fontSize: 10,fontWeight: FontWeight.bold),),
+                        Text(model.productRating.toString(),style: TextStyle(color: Colors.white,fontSize: 10,fontWeight: FontWeight.bold),),
                         const SizedBox(width: 10,),
                       ],
                     ),
                   ),
                 )
-
               ],
             ),
             const SizedBox(height: 10,),
-            Text('Caffe Mocha',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
-            Text('Deep Foam',style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+            Text(model.productName,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+            Text(model.productDescription,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold,color: Colors.grey),),
 
             const SizedBox(height: 10,),
             Row(
               children: [
-                Text('₹ 450',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                Text('₹${model.productPrice}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                 Spacer(),
                 Container(
                   decoration: BoxDecoration(

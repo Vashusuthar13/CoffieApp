@@ -1,4 +1,5 @@
 import 'package:coffie/common/product_card.dart';
+import 'package:coffie/model/product_model.dart';
 import 'package:coffie/utills/app_colors.dart';
 import 'package:coffie/view/screens/dashboard/dashboard_controller.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,17 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+
+    final List<ProductModel> product = [
+      ProductModel(productName: 'Special', productPrice: 2000, productDescription: 'productDescription', productImage: 'assets/images/coffee1.png', productRating: 4.5),
+      ProductModel(productName: 'productName', productPrice: 200, productDescription: 'productDescription', productImage: 'assets/images/coffee2.png', productRating: 4),
+      ProductModel(productName: 'productName', productPrice: 180, productDescription: 'productDescription', productImage: 'assets/images/coffee3.png', productRating: 4),
+      ProductModel(productName: 'productName', productPrice: 500, productDescription: 'productDescription', productImage: 'assets/images/coffee4.png', productRating: 4),
+
+
+    ];
+
+    final size = MediaQuery.of(context).size;  
     final controller = Get.find<DashboardController>();
 
     return DefaultTabController(
@@ -147,7 +158,7 @@ class Dashboard extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: 8,
+                    itemCount: product.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 12,
@@ -155,7 +166,8 @@ class Dashboard extends StatelessWidget {
                       childAspectRatio: size.width / (size.height * 0.68),
                     ),
                     itemBuilder: (context, index) {
-                      return const ProductCard();
+                      var list = product[index];
+                      return  ProductCard(model: list,);
                     },
                   ),
                 ),
