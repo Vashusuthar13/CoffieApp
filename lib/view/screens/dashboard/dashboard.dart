@@ -1,6 +1,7 @@
 import 'package:coffie/common/product_card.dart';
 import 'package:coffie/model/product_model.dart';
 import 'package:coffie/utills/app_colors.dart';
+import 'package:coffie/utills/app_routes.dart';
 import 'package:coffie/view/screens/dashboard/dashboard_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -167,7 +168,9 @@ class Dashboard extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       var list = product[index];
-                      return  ProductCard(model: list,);
+                      return  GestureDetector(
+                          onTap: () {Get.toNamed(AppRoutes.coffeedetail,arguments: list);},
+                          child: ProductCard(model: list,));
                     },
                   ),
                 ),

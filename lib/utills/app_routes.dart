@@ -1,4 +1,5 @@
 import 'package:coffie/view/screens/bottom_bar/bottom_bar.dart';
+import 'package:coffie/view/screens/coffie_detail_screen/coffie_detail_screen.dart';
 import 'package:coffie/view/screens/dashboard/dashboard.dart';
 import 'package:coffie/view/screens/dashboard/dashboard_binding.dart';
 import 'package:coffie/view/screens/landing/landing_binding.dart';
@@ -8,6 +9,7 @@ class AppRoutes {
   static const String landing = '/landing';
   static const String dashboard = '/dashboard';
   static const String bottombar = '/bottombar';
+  static const String coffeedetail = '/coffeedetail';
 
   static final pages = [
     GetPage(
@@ -27,6 +29,12 @@ class AppRoutes {
     GetPage(
         name: bottombar,
         page: () => BottomBar(),
+    ),
+
+
+    GetPage(
+      name: coffeedetail,
+      page: () => CoffieDetailScreen(),
     ),
 
 
