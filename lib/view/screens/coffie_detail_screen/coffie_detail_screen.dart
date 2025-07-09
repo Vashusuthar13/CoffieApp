@@ -1,4 +1,3 @@
-import 'package:coffie/model/product_model.dart';
 import 'package:coffie/utills/app_colors.dart';
 import 'package:coffie/view/screens/coffie_detail_screen/coffie_detail_controller.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,11 @@ class CoffieDetailScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Icon(Icons.arrow_back_ios_new_rounded),
+            GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Icon(Icons.arrow_back_ios_new_rounded)),
             Spacer(),
             Text('Detail'),
             Spacer(),
@@ -70,7 +73,7 @@ class CoffieDetailScreen extends StatelessWidget {
 
            Row(
              children: [
-               SvgPicture.asset('assets/icons/Star.svg'),
+               SvgPicture.asset('assets/icons/Rating.svg'),
                Text(controller.product.productRating.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
                Text('(230)',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12,color: Colors.grey),),
              ],
@@ -144,14 +147,53 @@ class CoffieDetailScreen extends StatelessWidget {
              ],
            )
 
-
-
-
-
-
          ],
        ),
      ),
+
+      bottomSheet: Container(
+        padding: EdgeInsets.all(16),
+        height: MediaQuery.of(context).size.height * 0.12,
+        color: Colors.white,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Price',style: TextStyle(color: Colors.grey),),
+                    Text('₹${controller.product.productPrice}',style: TextStyle(color: AppColors.primary,fontSize: 18,fontWeight: FontWeight.bold),)
+                  ],
+                ),
+                SizedBox(
+                  width: size.width * 0.5,
+                  child: ElevatedButton(
+                    onPressed: () {
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: Text(
+                      'Buy Now',
+                      style: TextStyle(fontSize: 16,color: Colors.white),
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+
+
+          ],
+        ),
+      )
 
 
     );

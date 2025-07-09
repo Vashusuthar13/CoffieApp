@@ -1,4 +1,5 @@
 import 'package:coffie/view/screens/bottom_bar/bottom_bar.dart';
+import 'package:coffie/view/screens/coffie_detail_screen/coffie_detail_binding.dart';
 import 'package:coffie/view/screens/coffie_detail_screen/coffie_detail_screen.dart';
 import 'package:coffie/view/screens/dashboard/dashboard.dart';
 import 'package:coffie/view/screens/dashboard/dashboard_binding.dart';
@@ -35,6 +36,7 @@ class AppRoutes {
     GetPage(
       name: coffeedetail,
       page: () => CoffieDetailScreen(),
+      binding: CoffeeDetailBinding()
     ),
 
 

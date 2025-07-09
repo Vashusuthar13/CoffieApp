@@ -12,7 +12,6 @@ void main() {
   Get.put(DashboardController());
   Get.put(BottomNavController());
   Get.put(LandingController());
-  Get.put(CoffeeDetailController());
 }
 
 class MyApp extends StatelessWidget {
